@@ -42,6 +42,7 @@ RUN \
     && make \
     && make install \
     && make install-dev \
+    && mkdir /bitlbee-data && cp bitlbee.conf /bitlbee-data/bitlbee.conf \
     && cd /tmp \
     && git clone https://github.com/jgeboski/bitlbee-facebook.git \
     && cd bitlbee-facebook \
@@ -78,10 +79,9 @@ RUN \
     && rm -rf /tmp/* \
     && rm -rf /usr/include/bitlbee \
     && rm -f /usr/lib/pkgconfig/bitlbee.pc \
-    && apk del .build-dependencies && \
-	mkdir /bitlbee-data
+    && apk del .build-dependencies
 
 VOLUME /bitlbee-data
 WORKDIR /bitlbee-data
 
-CMD ["bitlbee", "-F", "-n", "-v","-d", "/bitlbee-data", "-u", "root"]
+CMD ["bitlbee", "-D", "-n", "-v","-d", "/bitlbee-data", "-c", "/bitlbee-data/bitlbee.conf" "-u", "root"]
