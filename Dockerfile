@@ -84,4 +84,4 @@ RUN \
 VOLUME /bitlbee-data
 WORKDIR /bitlbee-data
 
-CMD ["bitlbee", "-D", "-n", "-v","-d", "/bitlbee-data", "-c", "/bitlbee-data/bitlbee.conf" "-u", "root"]
+CMD ["bitlbee", "-F", "-n", "-v","-d", "/bitlbee-data", "-c", "/bitlbee-data/bitlbee.conf", "-u", "root"]
