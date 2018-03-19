@@ -83,5 +83,6 @@ RUN \
 
 VOLUME /bitlbee-data
 WORKDIR /bitlbee-data
+EXPOSE 6667
 
 CMD ["bitlbee", "-F", "-n", "-v","-d", "/bitlbee-data", "-c", "/bitlbee-data/bitlbee.conf", "-u", "root"]
