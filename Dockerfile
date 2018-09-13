@@ -44,26 +44,6 @@ RUN \
     && make install-dev \
     && mkdir /bitlbee-data && cp bitlbee.conf /bitlbee-data/bitlbee.conf \
     && cd /tmp \
-    && git clone https://github.com/jgeboski/bitlbee-facebook.git \
-    && cd bitlbee-facebook \
-    && ./autogen.sh \
-    && make \
-    && make install \
-    && strip /usr/lib/bitlbee/facebook.so \
-    && cd /tmp \
-    && git clone https://github.com/jgeboski/bitlbee-steam.git \
-    && cd bitlbee-steam \
-    && ./autogen.sh --build=x86_64-alpine-linux-musl --host=x86_64-alpine-linux-musl \
-    && make \
-    && make install \
-    && strip /usr/lib/bitlbee/steam.so \
-    && cd /tmp \
-    && git clone git://github.com/EionRobb/skype4pidgin.git \
-    && cd skype4pidgin/skypeweb \
-    && make \
-    && make install \
-    && strip /usr/lib/purple-2/libskypeweb.so \
-    && cd /tmp \
     && git clone --recursive https://github.com/majn/telegram-purple \
     && cd telegram-purple \
     && ./configure --build=x86_64-alpine-linux-musl --host=x86_64-alpine-linux-musl \
@@ -71,11 +51,13 @@ RUN \
     && make install \
     && strip /usr/lib/purple-2/telegram-purple.so \
     && cd /tmp \
-    && hg clone https://bitbucket.org/EionRobb/purple-hangouts \
-    && cd purple-hangouts \
+    && git clone https://github.com/kensanata/bitlbee-mastodon.git \
+    && cd bitlbee-mastodon \
+    && ./autogen.sh \
+    && ./configure \
     && make \
     && make install \
-    && strip /usr/lib/purple-2/libhangouts.so \
+
     && rm -rf /tmp/* \
     && rm -rf /usr/include/bitlbee \
     && rm -f /usr/lib/pkgconfig/bitlbee.pc \
